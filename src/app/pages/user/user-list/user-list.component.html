@@ -1,0 +1,90 @@
+<div class="add-button">
+    <button mat-button class="create" (click)="openDialogWithTemplateRef(myDialog)">Add a Ticket</button>
+</div>
+
+<div *ngIf="userList.length != 0">
+
+    <mat-table [dataSource]="userList" class="mat-elevation-z8" style="padding-top: 10px">
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="position">
+            <th mat-header-cell *matHeaderCellDef> No. </th>
+            <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="weight">
+            <th mat-header-cell *matHeaderCellDef> Weight </th>
+            <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="symbol">
+            <th mat-header-cell *matHeaderCellDef> Symbol </th>
+            <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;">
+        </mat-row>
+    </mat-table>
+</div>
+
+<ng-template #myDialog class="popup">
+    <h2>Form</h2>
+    <form class="search-form" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+        <div class="form-text-field">
+            <mat-form-field appearance="legacy">
+                <mat-label>Title</mat-label>
+                <input matInput formControlName="title">
+            </mat-form-field>
+        </div>
+        <div class="form-text-field">
+            <mat-form-field class="example-full-width">
+                <mat-label>Description</mat-label>
+                <textarea matInput placeholder="Description..." formControlName="description"></textarea>
+            </mat-form-field>
+        </div>
+        <div class="form-text-field">
+            <mat-form-field appearance="legacy">
+                <mat-label>Status</mat-label>
+                <input matInput formControlName="status">
+            </mat-form-field>
+        </div>
+        <div class="form-text-field">
+            <mat-form-field appearance="fill">
+                <mat-label>Asignee</mat-label>
+                <select matNativeControl required formControlName="asignee">
+                    <option value="Select" disabled>Select</option>
+                    <option value="Deepa">Deepa</option>
+                    <option value="Sundar">Sundar</option>
+                    <option value="Srimathi">Srimathi</option>
+                </select>
+            </mat-form-field>
+        </div>
+        <div class="form-text-field">
+            <mat-form-field appearance="fill">
+                <mat-label>Priority</mat-label>
+                <select matNativeControl required formControlName="priority">
+                    <option value="Select" disabled>Select</option>
+                    <option value="Level1">Level1</option>
+                    <option value="Level2">Level2</option>
+                    <option value="Level3">Level3</option>
+                    <option value="Level4">Level4</option>
+                </select>
+            </mat-form-field>
+        </div>
+        <mat-dialog-actions>
+            <button mat-button matDialogClose color="primary" type="submit" [disabled]="!userForm.valid">Submit</button>
+        </mat-dialog-actions>
+        <mat-dialog-actions>
+            <button mat-button matDialogClose color="primary">Close</button>
+        </mat-dialog-actions>
+    </form>
+</ng-template>

@@ -1,0 +1,13 @@
+.create{
+    height: 50px;
+    width: 100px;
+    float: right;
+    margin: 20px;
+}
+.create::after{
+    clear: both;
+    display: table;
+}
+mat-dialog-container#mat-dialog-1{
+    width: 600px;
+}

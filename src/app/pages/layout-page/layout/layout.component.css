@@ -1,0 +1,17 @@
+.footer {
+    position: fixed;
+    z-index: 1;
+    bottom: 0;
+    width: calc(120% - 288px);
+    height: 40px;
+    background-color: #3b4f6a;
+    color: white;
+    margin: 0px;
+    text-align: center;
+    line-height: 40px;
+}
+.logout-button {
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px;
+}

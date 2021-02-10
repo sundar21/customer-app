@@ -1,0 +1,31 @@
+.create {
+    height: 50px;
+    width: 100px;
+    float: right;
+    margin: 20px;
+    cursor: pointer;
+}
+.create::after {
+    clear: both;
+    display: table;
+}
+mat-dialog-container#mat-dialog-1 {
+    width: 600px;
+}
+table {
+    width: 100%;
+    table-layout: fixed;
+}
+
+th,
+td {
+    overflow: hidden;
+    width: 25%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.add-button {
+    display: flex;
+    justify-content: flex-end;
+}
